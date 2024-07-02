@@ -12,3 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         accommodations_by_user();      
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($path === '/register') {
+        $raw = file_get_contents('php://input');
+        $post = json_decode($raw, true);
+        include_once "./server/register.php";
+        register($post);
+    }
+}
